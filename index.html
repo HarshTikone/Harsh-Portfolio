@@ -1,0 +1,140 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Tikone - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+
+  </head>
+  <body>
+    <div class="container">
+      <aside class="menu">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="workex.html">Internships / Work Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="cocurriculum.html">Co-Curriculum</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </aside>
+
+      <main class="content">
+          <header class="profile-header">
+          <img src="images/Harsh-Profile-Img.jpg" alt="Harsh Tikone" class="profile-img">
+          <div class="profile-info">
+              <h1>Harsh Tikone</h1>
+              <p><strong>B.Tech in Artificial Intelligence and Machine Learning</strong><br>
+              Thakur College of Engineering and Technology<br>
+              Mumbai, Maharashtra, India<br>
+              Email: harshtikonehs28@gmail.com<br>
+              <b>CGPA:</b> 9.68/10.00
+              <b>12th Percentage:</b> 89.17%
+              <b>10th Percentage:</b> 84.4%
+              </p>
+              <div class="download-buttons">
+                <a href="cv/HARSH TIKONE CV.pdf" download class="btn">Download CV</a>
+                <a href="resume/HARSH TIKONE RESUME.pdf" download class="btn">Download Resume</a>
+              </div>
+          </div>
+          </header>
+        
+        <section id="biography">
+          <h2>Biography</h2>
+          <p>Harsh Tikone is an <strong>AI and Machine Learning enthusiast</strong> currently pursuing a <strong>B.Tech in Artificial Intelligence and Machine Learning</strong> at <strong>Thakur College of Engineering and Technology (TCET), Mumbai</strong>. With an impressive <strong>CGPA of 9.68</strong>, Harsh combines strong academics with real-world impact, driven by curiosity and dedication to data-driven innovation.</p>
+
+          <p>Through high-impact internships at renowned organizations like <strong>Tata Consultancy Services</strong>, <strong>TRRAIN Circle Technologies</strong>, <strong>Pantech Prolabs</strong>, and <strong>Holo Inventions</strong>, Harsh has designed and deployed scalable AI solutions. His portfolio includes projects such as an <strong>AI-powered Video KYC system</strong> using <strong>Azure Face API</strong> and <strong>Vision Services</strong>, a <strong>shelf analytics tool</strong> classifying over <strong>300,000 product entries</strong> with <strong>Convolutional Neural Networks (CNNs)</strong>, and <strong>market feasibility analysis</strong> integrating <strong>Google Maps API</strong> and business intelligence.</p>
+
+          <p>Harsh is also deeply committed to research, having presented <strong>multiple full-length papers</strong> at prestigious international conferences (<strong>ICICN 2023, 2024, and 2025</strong>). His work spans topics like <strong>multimodal conversational AI</strong>, <strong>large language models (LLMs)</strong>, and <strong>automation in research paper formatting and summarization</strong>—reflecting thought leadership in applied machine learning and natural language processing.</p>
+
+          <p>Beyond his technical expertise, Harsh serves as the <strong>General Advisor</strong> at <strong>TSDW</strong> (TCET Student Development & Welfare Cell), mentoring student-led initiatives and fostering academic, cultural, and personal growth. As a <strong>5-star Python coder on HackerRank</strong> and an active participant in peer-learning communities like <strong>SUPER AI COMMUNITY</strong>, he shares knowledge and inspires peers to explore the transformative power of AI and data science.</p>
+
+          <p><strong>Passionate, detail-oriented, and forward-thinking</strong>, Harsh Tikone is driven by the vision of building <strong>AI tools</strong> that solve real-world problems, bridge industry gaps, and empower businesses and communities alike.</p>
+        </section>
+        <section id="cgpa-timeline">
+          <h2>Under-Graduate Semester-wise CGPA</h2>
+          
+        </section>
+        <canvas id="cgpaChart"></canvas>
+
+
+
+      </main>
+    </div>
+    <script>
+      Chart.register(ChartDataLabels);
+
+      const ctx = document.getElementById('cgpaChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+          datasets: [{
+            label: 'CGPA',
+            data: [8.95, 9.96, 9.74, 9.96, 9.75, 10.00, 9.54, 9.50],
+            borderColor: '#4fc3f7',
+            backgroundColor: 'rgba(79, 195, 247, 0.2)',
+            borderWidth: 3,
+            pointBackgroundColor: '#4fc3f7',
+            tension: 0.3  // smooth curve
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                label: function(context) {
+                  return 'CGPA: ' + context.parsed.y;
+                }
+              }
+            },
+            legend: {
+              display: false  // hide legend for cleaner look; set true if you like
+            },
+            datalabels: {
+              color: '#000',                // black text
+              font: {
+                weight: 'bold',
+                size: 20
+              },
+              align: 'bottom',                 // position above point
+              formatter: function(value) {
+                return value.toFixed(2);    // format like 9.96
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#000'   // dark axis labels
+              },
+              grid: {
+                color: '#000'   // darker grid lines
+              }
+            },
+            y: {
+              beginAtZero: false,
+              suggestedMin: 9,
+              suggestedMax: 10,
+              ticks: {
+                color: '#000',
+                stepSize: 0.5
+              },
+              grid: {
+                color: '#000'
+              }
+            }
+          }
+        }
+      });
+    </script>
+
+  </body>
+  </html>
